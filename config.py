@@ -1,4 +1,4 @@
-path='./set1/'
+path='./set2/'
 datafile='data.csv'
 validatorPath = 'validator.json'
 rearrangerPath = 'reArranger.json'

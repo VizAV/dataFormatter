@@ -22,11 +22,11 @@ class Validator():
 
     def transform(self,row):
         errorRow={}
-        for key in list(row.keys()):
-            if key not in list(self.validator.keys()):
-                # Write out saying that this value is not present in the validator
-                errorRow[key] = 'Not in validator'
-                del row[key]
+        # for key in list(row.keys()):
+        #     if key not in list(self.validator.keys()):
+        #         # Write out saying that this value is not present in the validator
+        #         errorRow[key] = 'Not in validator'
+        #         del row[key]
 
         # For each element mentioned in the validator column
 

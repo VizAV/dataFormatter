@@ -28,18 +28,21 @@ def convertStringToList(cell,structure):
 
     try:
         cell = ast.literal_eval(cell)
-        elemList=[]
-        elemErrorList=[]
-        for elem in cell:
-            elem, errorElem = convertCells[structure['element']['type']](elem, structure['element'])
-            elemList.append(elem)
-            elemErrorList.append(errorElem)
 
-        return elemList,elemErrorList
-    except:
+    except Exception as e:
+        print(e.__str__())
         errorcell = 'Cant convert to List'
         cell = None
         return cell,errorcell
+
+    elemList = []
+    elemErrorList = []
+    for elem in cell:
+        elem, errorElem = convertCells[structure['element']['type']](elem, structure['element'])
+        elemList.append(elem)
+        elemErrorList.append(errorElem)
+
+    return elemList, elemErrorList
 
     # for val in range(len(cell)):
     #     for format in ['%d-%m-%Y','%d/%m/%y','%d-%b %y']:
@@ -68,8 +71,28 @@ def convertStringToDatetime(cell,structure):
 
     return cell,errorCell
 
-def convertStringToObject():
-    pass
+def convertStringToObject(cell,structure):
+    try:
+        cell=ast.literal_eval(str(cell))
+    except Exception as e:
+        # print(e.__str__())
+        errorcell = 'Cant convert to object'
+        cell = None
+        return cell,errorcell
+
+    outputcell={}
+    errorCell={}
+
+    for key,value in structure['element'].items():
+        try:
+            subcell=cell[key]
+            outputcell[key], errorCell[key] = convertCells[value['type']](subcell, value)
+        except:
+            outputcell[key]=None
+            errorCell[key]='This key does not exist'
+            pass
+
+    return outputcell,errorCell
 
 convertCells = {
     'str':convertStringToString,
