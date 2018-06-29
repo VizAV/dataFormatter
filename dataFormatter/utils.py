@@ -125,4 +125,11 @@ def reArrangeRow(structure,row):
             modifiedRow[key] = row[value]
         elif type(value) is dict:
             modifiedRow[key]=reArrangeRow(value,row)
+        elif type(value) is list:
+            modifiedValueList=[]
+            substructure=value[0]
+            for element in row[key]:
+                modifiedRowElement = reArrangeRow(substructure,element)
+                modifiedValueList.append(modifiedRowElement)
+            modifiedRow[key]=modifiedValueList
     return modifiedRow
