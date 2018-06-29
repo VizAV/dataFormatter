@@ -95,7 +95,7 @@ def convertStringToObject(cell,structure):
     return outputcell,errorCell
 
 convertCells = {
-    'str':convertStringToString,
+    'string':convertStringToString,
     'float':convertStringToFloat,
     'list':convertStringToList,
     'datetime':convertStringToDatetime,
