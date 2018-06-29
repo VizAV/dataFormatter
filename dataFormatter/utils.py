@@ -27,7 +27,7 @@ def convertStringToFloat(cell,structure):
 def convertStringToList(cell,structure):
 
     try:
-        cell = ast.literal_eval(cell)
+        cell = ast.literal_eval(str(cell))
 
     except Exception as e:
         print(e.__str__())
