@@ -22,6 +22,7 @@ class Validator():
 
     def transform(self,row):
         errorRow={}
+        correctRow={}
         # for key in list(row.keys()):
         #     if key not in list(self.validator.keys()):
         #         # Write out saying that this value is not present in the validator
@@ -38,7 +39,7 @@ class Validator():
             else:
 
                 # Transform each type into another
-                row[key], errorRow[key] = convertCells[value['type']](row[key],value)
+                correctRow[key], errorRow[key] = convertCells[value['type']](row[key],value)
 
                 # # Get each element of the list and do the previous step
                 # if value['type'] == 'list':
@@ -53,7 +54,7 @@ class Validator():
 
 
 
-        return row, errorRow
+        return correctRow, errorRow
 
 
 def read(filePath):
