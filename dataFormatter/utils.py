@@ -30,7 +30,7 @@ def convertStringToList(cell,structure):
         cell = ast.literal_eval(str(cell))
 
     except Exception as e:
-        print(e.__str__())
+        # print(e.__str__())
         errorcell = 'Cant convert to List'
         cell = None
         return cell,errorcell
@@ -56,7 +56,7 @@ def convertStringToList(cell,structure):
     # return cell
 
 def convertStringToDatetime(cell,structure):
-    for format in ['%d-%m-%Y', '%d/%m/%y', '%d %b %y','%d/%m/%Y',"%Y-%m-%d","%Y.0"]:
+    for format in ['%m/%d/%y']:
         try:
             value = datetime.strptime(str(cell), format)
             errorValue=None
